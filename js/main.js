@@ -31,6 +31,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 '<p class="error">CV bilgileri yüklenemedi</p>';
         }
     };
-    
+
+    const applyTheme = (theme) => {
+        // Mevcut tema sınıflarını kaldır
+        document.body.classList.remove('light', 'medium-light', 'medium-dark', 'dark');
+        // Yeni temayı ekle
+        document.body.classList.add(theme);
+        // Tercihi kaydet
+        localStorage.setItem('theme', theme);
+    };
+
+    // Tema seçici olay dinleyicisi
+    const themeSelect = document.getElementById('theme-select');
+    themeSelect.addEventListener('change', (e) => {
+        applyTheme(e.target.value);
+    });
+
+    // Sayfa yüklendiğinde tema tercihini kontrol et
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    themeSelect.value = savedTheme;
+    applyTheme(savedTheme);
+
     loadData();
 });
