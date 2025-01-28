@@ -14,13 +14,28 @@ document.addEventListener('DOMContentLoaded', () => {
             // CV linklerini oluştur
             const cvLinksContainer = document.getElementById('cv-links');
             cvLinksContainer.innerHTML = '';
-            
+
             Object.entries(data.user.cv).forEach(([lang, fileName]) => {
                 const link = document.createElement('a');
                 link.href = fileName;
                 link.className = 'cv-link';
-                link.download = true;
-                link.textContent = `CV İndir (${lang.toUpperCase()})`;
+
+                // İndirilen dosyanın adını belirleme
+                let userName = data.user.name;
+                let fileSuffix = '';
+
+                if (lang === 'tr') {
+                    fileSuffix = 'Özgeçmiş.pdf';
+                } else if (lang === 'en') {
+                    fileSuffix = 'CV.pdf';
+                }
+
+                const downloadFileName = `${userName} ${fileSuffix}`;
+                link.download = downloadFileName;
+
+                // Buton metnini güncelleme
+                const langText = lang === 'tr' ? 'Türkçe' : 'English';
+                link.textContent = `CV (${langText})`;
                 cvLinksContainer.appendChild(link);
             });
             
