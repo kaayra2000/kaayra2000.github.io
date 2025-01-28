@@ -1,0 +1,11 @@
+{
+    "user": {
+      "name": "Muhammed Kayra Bulut",
+      "title": "Bilgisayar Yüksek Mühendisi",
+      "bio": "Python, C++, C ve Java dillerinde uzmanlaşmış olup, derin öğrenme, yapay zeka ve doğal dil işleme konularında çalışmalar yapmıştır.",
+      "cv": {
+        "en": "assets/cv_en.pdf",
+        "tr": "assets/cv_tr.pdf"
+      }
+    }
+  }
