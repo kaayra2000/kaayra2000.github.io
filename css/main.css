@@ -226,3 +226,18 @@ h1 {
         text-align: center;
     }
 }
+
+/* 'Hakkımda' ve 'CV'lerim' bölümlerini ortala */
+.info-section,
+.cv-section {
+    text-align: center;
+}
+
+/* Başlıkları ortala */
+.info-section h2,
+.cv-section h2 {
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
