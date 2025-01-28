@@ -19,6 +19,11 @@ body {
     --subtitle-color: #333333;
     --bio-text-color: #333333;
     --link-background: linear-gradient(45deg, #0066cc, #0099ff);
+
+    /* Tema Seçicisi Renkleri */
+    --select-background-color: #ffffff;
+    --select-text-color: #000000;
+    --select-border-color: #cccccc;
 }
 
 /* Tema Stilleri */
@@ -30,6 +35,11 @@ body.light {
     --subtitle-color: #333333;
     --bio-text-color: #333333;
     --link-background: linear-gradient(45deg, #0066cc, #0099ff);
+
+    /* Tema Seçicisi Renkleri */
+    --select-background-color: #ffffff;
+    --select-text-color: #000000;
+    --select-border-color: #cccccc;
 }
 
 body.medium-light {
@@ -40,26 +50,41 @@ body.medium-light {
     --subtitle-color: #222222;
     --bio-text-color: #222222;
     --link-background: linear-gradient(45deg, #0055aa, #0077cc);
+
+    /* Tema Seçicisi Renkleri */
+    --select-background-color: #f0f0f0;
+    --select-text-color: #111111;
+    --select-border-color: #bbbbbb;
 }
 
 body.medium-dark {
     --background-gradient: linear-gradient(135deg, #3a3a3a, #2d2d2d);
     --text-color: #e0e0e0;
-    --card-background: rgba(60, 60, 60, 0.9); /* Rengi biraz açtık */
+    --card-background: rgba(60, 60, 60, 0.9);
     --heading-color: #00aaff;
-    --subtitle-color: #dddddd; /* Daha açık renk */
-    --bio-text-color: #dddddd; /* Daha açık renk */
+    --subtitle-color: #dddddd;
+    --bio-text-color: #dddddd;
     --link-background: linear-gradient(45deg, #0077cc, #0099ee);
+
+    /* Tema Seçicisi Renkleri */
+    --select-background-color: #4a4a4a;
+    --select-text-color: #e0e0e0;
+    --select-border-color: #555555;
 }
 
 body.dark {
     --background-gradient: linear-gradient(135deg, #1a1a1a, #0d0d0d);
     --text-color: #ffffff;
-    --card-background: rgba(30, 30, 30, 0.9); /* Rengi biraz açtık */
+    --card-background: rgba(30, 30, 30, 0.9);
     --heading-color: #00ccff;
-    --subtitle-color: #cccccc; /* Daha açık renk */
-    --bio-text-color: #cccccc; /* Daha açık renk */
+    --subtitle-color: #cccccc;
+    --bio-text-color: #cccccc;
     --link-background: linear-gradient(45deg, #0099ff, #00ccff);
+
+    /* Tema Seçicisi Renkleri */
+    --select-background-color: #333333;
+    --select-text-color: #ffffff;
+    --select-border-color: #444444;
 }
 
 /* Genel Stiller */
@@ -78,26 +103,38 @@ body {
 }
 
 /* Tema Seçici Stilleri */
+/* Tema Seçici Stilleri */
 .theme-selector {
     display: flex;
-    justify-content: flex-end; /* Sağ tarafa hizala */
+    justify-content: flex-end;
     align-items: center;
-    margin-bottom: 1rem; /* Alt boşluk ekle */
-    /* position: absolute; özelliğini kaldırın */
+    margin-bottom: 1rem;
 }
 
 .theme-selector label {
     margin-right: 0.5rem;
     font-weight: bold;
+    color: var(--text-color); /* Etiketi temanın metin rengine göre ayarla */
 }
 
 #theme-select {
     padding: 0.5rem;
     font-size: 1rem;
     border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    color: #000; /* Metin rengini siyah yap */
+    border: 1px solid var(--select-border-color);
+    background-color: var(--select-background-color);
+    color: var(--select-text-color);
+}
+
+/* Seçim Kutusu Okunu Temaya Uygun Hale Getirme (Sadece WebKit Tarayıcılar için) */
+#theme-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='5'%3E%3Cpath fill='%23${encodeURIComponent(var(--select-text-color))}' d='M0 0l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 0.6rem;
+    padding-right: 1.5rem;
 }
 
 .container {
