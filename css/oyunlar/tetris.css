@@ -11,7 +11,18 @@
     border: 2px solid var(--text-color);
     background-color: var(--card-background);
     max-width: 100%;
-    /* Container'ı aşmamasını sağla */
+}
+
+.score-board {
+    margin-top: 1rem;
+    /* Oyun alanının hemen altında biraz boşluk */
+    color: var(--text-color);
+    /* Temaya uygun metin rengi */
+    font-size: 1.2rem;
+}
+
+.score-board p {
+    margin: 0;
 }
 
 .game-over-message {
@@ -42,7 +53,7 @@
     cursor: pointer;
     background-color: var(--link-background);
     /* Temaya uygun buton rengi */
-    color: #fff;
+    color: var(--button-text-color);
     border: none;
     border-radius: 5px;
 }

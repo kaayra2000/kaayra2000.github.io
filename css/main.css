@@ -1,6 +1,8 @@
 /* Tema Değişkenleri */
 
+
 /* Varsayılan Tema Değişkenleri */
+
 body {
     --background-gradient: linear-gradient(135deg, #f0f0f0, #e0e0e0);
     --text-color: #000000;
@@ -9,14 +11,15 @@ body {
     --subtitle-color: #333333;
     --bio-text-color: #333333;
     --link-background: linear-gradient(45deg, #0066cc, #0099ff);
-
     /* Tema Seçici Değişkenleri */
     --select-background-color: #ffffff;
     --select-text-color: #000000;
     --select-border-color: #cccccc;
 }
 
+
 /* Açık Tema */
+
 body.light {
     --background-gradient: linear-gradient(135deg, #ffffff, #eeeeee);
     --text-color: #000000;
@@ -25,13 +28,15 @@ body.light {
     --subtitle-color: #333333;
     --bio-text-color: #333333;
     --link-background: linear-gradient(45deg, #0066cc, #0099ff);
-
     --select-background-color: #ffffff;
     --select-text-color: #000000;
     --select-border-color: #cccccc;
+    --button-text-color: #000000;
 }
 
+
 /* Orta Açık Tema */
+
 body.medium-light {
     --background-gradient: linear-gradient(135deg, #dcdcdc, #c0c0c0);
     --text-color: #111111;
@@ -40,13 +45,15 @@ body.medium-light {
     --subtitle-color: #222222;
     --bio-text-color: #222222;
     --link-background: linear-gradient(45deg, #0055aa, #0077cc);
-
     --select-background-color: #f0f0f0;
     --select-text-color: #111111;
     --select-border-color: #bbbbbb;
+    --button-text-color: #000000;
 }
 
+
 /* Orta Koyu Tema */
+
 body.medium-dark {
     --background-gradient: linear-gradient(135deg, #3a3a3a, #2d2d2d);
     --text-color: #e0e0e0;
@@ -55,13 +62,15 @@ body.medium-dark {
     --subtitle-color: #dddddd;
     --bio-text-color: #dddddd;
     --link-background: linear-gradient(45deg, #0077cc, #0099ee);
-
     --select-background-color: #4a4a4a;
     --select-text-color: #e0e0e0;
     --select-border-color: #555555;
+    --button-text-color: #ffffff;
 }
 
+
 /* Koyu Tema */
+
 body.dark {
     --background-gradient: linear-gradient(135deg, #1a1a1a, #0d0d0d);
     --text-color: #ffffff;
@@ -70,13 +79,15 @@ body.dark {
     --subtitle-color: #cccccc;
     --bio-text-color: #cccccc;
     --link-background: linear-gradient(45deg, #0099ff, #00ccff);
-
     --select-background-color: #333333;
     --select-text-color: #ffffff;
     --select-border-color: #444444;
+    --button-text-color: #ffffff;
 }
 
+
 /* Genel Stiller */
+
 * {
     margin: 0;
     padding: 0;
@@ -91,7 +102,9 @@ body {
     line-height: 1.6;
 }
 
+
 /* Tema Seçici Stilleri */
+
 .theme-selector {
     display: flex;
     align-items: center;
@@ -113,7 +126,9 @@ body {
     color: var(--select-text-color);
 }
 
+
 /* Navigasyon Menüsü Stilleri */
+
 .navbar {
     background-color: var(--card-background);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -144,26 +159,27 @@ body {
     background-color: var(--select-background-color);
 }
 
+
 /* İçerik Alanı */
+
 #content {
     padding: 2rem;
 }
 
+
 /* Responsive Tasarım */
+
 @media (max-width: 768px) {
     .theme-selector {
         flex-direction: column;
         align-items: flex-start;
     }
-
     .navbar ul {
         flex-direction: column;
     }
-
     .navbar a {
         padding: 0.5rem 1rem;
     }
-
     #content {
         padding: 1rem;
     }
