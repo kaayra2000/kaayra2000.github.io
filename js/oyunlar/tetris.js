@@ -63,34 +63,62 @@ function initTetris() {
     update();
 }
 
-// Canvas boyutlandırma ve ölçek
 function resizeCanvas() {
     // Ölçeği sıfırla
     context.setTransform(1, 0, 0, 1, 0, 0);
+
+    // Oyun alanının mantıksal boyutları
+    const gameWidth = 12;
+    const gameHeight = 20;
 
     // .tetris-container genişlik / yükseklik
     const container = document.querySelector('.tetris-container');
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
 
-    // 12:20 (en x boy)
-    const aspectRatio = 12 / 20;
+    // En-boy oranını koruyarak canvas boyutlarını belirle
+    const aspectRatio = gameWidth / gameHeight;
     let canvasWidth = containerWidth;
     let canvasHeight = canvasWidth / aspectRatio;
 
-    // Yükseklik çok büyükse, boyu sınırlayıp genişliği ayarla
+    // Yükseklik çok büyükse, yüksekliği sınırlayıp genişliği ayarla
     if (canvasHeight > containerHeight) {
         canvasHeight = containerHeight;
         canvasWidth = canvasHeight * aspectRatio;
     }
 
-    // Canvas'ın gerçek boyutlarını ayarla (çizim koordinat sistemi)
-    canvas.width = 12; // Oyun alanının genişliği (birim olarak)
-    canvas.height = 20; // Oyun alanının yüksekliği (birim olarak)
+    // Cihazın piksel oranını al
+    const scaleFactor = window.devicePixelRatio || 1;
 
-    // Stil boyutu (ekranda görünen boyut)
+    // Canvas'ın gerçek boyutlarını ayarla (piksel cinsinden)
+    canvas.width = canvasWidth * scaleFactor;
+    canvas.height = canvasHeight * scaleFactor;
+
+    // Stil boyutu (görünen boyut)
     canvas.style.width = `${canvasWidth}px`;
     canvas.style.height = `${canvasHeight}px`;
+
+    // Konteksin ölçeklendirilmesi
+    context.scale(
+        (canvasWidth / gameWidth) * scaleFactor,
+        (canvasHeight / gameHeight) * scaleFactor
+    );
+}
+
+function draw() {
+    // Gövdenin (body) stil değişkenlerini oku
+    const computedStyles = getComputedStyle(document.body);
+    // “--card-background” renk değişkenini al
+    const bgColor = computedStyles.getPropertyValue('--card-background').trim() || '#000';
+
+    // Canvas zeminini temadaki “card-background” rengiyle doldur
+    context.fillStyle = bgColor;
+    // Mantıksal oyun alanı boyutlarını kullanarak temizle
+    context.fillRect(0, 0, 12, 20);
+
+    // Arena ve aktif parça çizimi
+    drawMatrix(arena, { x: 0, y: 0 });
+    drawMatrix(player.matrix, player.pos);
 }
 
 // Her frame çağrılan fonksiyon
@@ -106,22 +134,6 @@ function update(time = 0) {
 
     draw();
     animationId = requestAnimationFrame(update);
-}
-
-// Temaya duyarlı çizim
-function draw() {
-    // Gövdenin (body) stil değişkenlerini oku
-    const computedStyles = getComputedStyle(document.body);
-    // “--card-background” renk değişkenini al
-    const bgColor = computedStyles.getPropertyValue('--card-background').trim() || '#000';
-
-    // Canvas zeminini temadaki “card-background” rengiyle doldur
-    context.fillStyle = bgColor;
-    context.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Arena ve aktif parça çizimi
-    drawMatrix(arena, { x: 0, y: 0 });
-    drawMatrix(player.matrix, player.pos);
 }
 
 // Klavye kontrolleri
