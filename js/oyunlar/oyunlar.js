@@ -6,4 +6,11 @@ function loadOyunlar() {
     const content = document.getElementById('content');
     // "oyunlar.css" dosyasını dinamik olarak ekle
     loadStyle('css/oyunlar/oyunlar.css');
+
+    // Tetris butonuna tıklama olayını ekle
+    const tetrisButton = document.getElementById('tetris-button');
+    tetrisButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        loadPage('tetris');
+    });
 }

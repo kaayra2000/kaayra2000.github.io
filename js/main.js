@@ -18,15 +18,21 @@ const loadPage = (page) => {
         .then(html => {
             content.innerHTML = html;
 
-            // Gerekli stil dosyasını yükle
+            // Gerekli stil dosyasını ve JavaScript dosyasını yükle
             if (page === 'hakkimda') {
                 loadStyle('css/hakkimda.css');
-                // Data'yı yükle
                 loadHakkimdaData();
             } else if (page === 'oyunlar') {
                 loadStyle('css/oyunlar/oyunlar.css');
-                // Gerekli script dosyasını yükle (varsa)
-                // loadScript('js/oyunlar/oyunlar.js'); // Eğer gerekliyse
+                loadScript('js/oyunlar/oyunlar.js', () => {
+                    loadOyunlar();
+                });
+            } else if (page === 'tetris') {
+                loadStyle('css/oyunlar/tetris.css');
+                loadScript('js/oyunlar/tetris.js', () => {
+                    // tetris.js yüklendikten sonra initTetris'i çağırıyoruz
+                    initTetris();
+                });
             }
         })
         .catch(error => {
@@ -34,7 +40,6 @@ const loadPage = (page) => {
             content.innerHTML = '<p>Sayfa yüklenemedi.</p>';
         });
 };
-
 
 const applyTheme = (theme) => {
     // Mevcut tema sınıflarını kaldır
