@@ -1,15 +1,5 @@
-/* Varsayılan Tema Değişkenleri */
-:root {
-    --background-gradient: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-    --text-color: #000000;
-    --card-background: rgba(255, 255, 255, 0.8);
-    --heading-color: #0066cc;
-    --subtitle-color: #333333;
-    --bio-text-color: #333333;
-    --link-background: linear-gradient(45deg, #0066cc, #0099ff);
-}
+/* Tema Değişkenleri */
 
-/* Tema Stilleri */
 /* Varsayılan Tema Değişkenleri */
 body {
     --background-gradient: linear-gradient(135deg, #f0f0f0, #e0e0e0);
@@ -20,13 +10,13 @@ body {
     --bio-text-color: #333333;
     --link-background: linear-gradient(45deg, #0066cc, #0099ff);
 
-    /* Tema Seçicisi Renkleri */
+    /* Tema Seçici Değişkenleri */
     --select-background-color: #ffffff;
     --select-text-color: #000000;
     --select-border-color: #cccccc;
 }
 
-/* Tema Stilleri */
+/* Açık Tema */
 body.light {
     --background-gradient: linear-gradient(135deg, #ffffff, #eeeeee);
     --text-color: #000000;
@@ -36,12 +26,12 @@ body.light {
     --bio-text-color: #333333;
     --link-background: linear-gradient(45deg, #0066cc, #0099ff);
 
-    /* Tema Seçicisi Renkleri */
     --select-background-color: #ffffff;
     --select-text-color: #000000;
     --select-border-color: #cccccc;
 }
 
+/* Orta Açık Tema */
 body.medium-light {
     --background-gradient: linear-gradient(135deg, #dcdcdc, #c0c0c0);
     --text-color: #111111;
@@ -51,12 +41,12 @@ body.medium-light {
     --bio-text-color: #222222;
     --link-background: linear-gradient(45deg, #0055aa, #0077cc);
 
-    /* Tema Seçicisi Renkleri */
     --select-background-color: #f0f0f0;
     --select-text-color: #111111;
     --select-border-color: #bbbbbb;
 }
 
+/* Orta Koyu Tema */
 body.medium-dark {
     --background-gradient: linear-gradient(135deg, #3a3a3a, #2d2d2d);
     --text-color: #e0e0e0;
@@ -66,12 +56,12 @@ body.medium-dark {
     --bio-text-color: #dddddd;
     --link-background: linear-gradient(45deg, #0077cc, #0099ee);
 
-    /* Tema Seçicisi Renkleri */
     --select-background-color: #4a4a4a;
     --select-text-color: #e0e0e0;
     --select-border-color: #555555;
 }
 
+/* Koyu Tema */
 body.dark {
     --background-gradient: linear-gradient(135deg, #1a1a1a, #0d0d0d);
     --text-color: #ffffff;
@@ -81,7 +71,6 @@ body.dark {
     --bio-text-color: #cccccc;
     --link-background: linear-gradient(45deg, #0099ff, #00ccff);
 
-    /* Tema Seçicisi Renkleri */
     --select-background-color: #333333;
     --select-text-color: #ffffff;
     --select-border-color: #444444;
@@ -103,18 +92,16 @@ body {
 }
 
 /* Tema Seçici Stilleri */
-/* Tema Seçici Stilleri */
 .theme-selector {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    margin-bottom: 1rem;
+    padding: 1rem;
 }
 
 .theme-selector label {
     margin-right: 0.5rem;
     font-weight: bold;
-    color: var(--text-color); /* Etiketi temanın metin rengine göre ayarla */
+    color: var(--text-color);
 }
 
 #theme-select {
@@ -126,118 +113,58 @@ body {
     color: var(--select-text-color);
 }
 
-/* Seçim Kutusu Okunu Temaya Uygun Hale Getirme (Sadece WebKit Tarayıcılar için) */
-#theme-select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='5'%3E%3Cpath fill='%23${encodeURIComponent(var(--select-text-color))}' d='M0 0l5 5 5-5z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.7rem center;
-    background-size: 0.6rem;
-    padding-right: 1.5rem;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-.profile-card {
-    background: var(--card-background);
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 1s ease-out;
-}
-
-h1 {
-    color: var(--heading-color);
-    font-size: 2.5rem;
+/* Navigasyon Menüsü Stilleri */
+.navbar {
+    background-color: var(--card-background);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 1rem;
-    text-align: center;
 }
 
-.subtitle {
-    color: var(--subtitle-color);
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.info-section h2,
-.cv-section h2 {
-    color: var(--heading-color);
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-}
-
-.bio-text {
-    color: var(--bio-text-color);
-    line-height: 1.8;
-    text-align: justify;
-}
-
-.cv-links {
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 1.5rem;
 }
 
-.cv-link {
-    padding: 1rem 2rem;
-    background: var(--link-background);
-    color: white;
+.navbar li {
+    margin: 0;
+}
+
+.navbar a {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: var(--text-color);
     text-decoration: none;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    transition: background 0.3s;
 }
 
-.cv-link:hover {
-    transform: translateY(-3px);
+.navbar a:hover,
+.navbar a.active {
+    background-color: var(--select-background-color);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* İçerik Alanı */
+#content {
+    padding: 2rem;
 }
 
+/* Responsive Tasarım */
 @media (max-width: 768px) {
-    .container {
-        padding: 1rem;
+    .theme-selector {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    h1 {
-        font-size: 2rem;
-    }
-
-    .cv-links {
+    .navbar ul {
         flex-direction: column;
     }
 
-    .cv-link {
-        text-align: center;
+    .navbar a {
+        padding: 0.5rem 1rem;
     }
-}
 
-/* 'Hakkımda' ve 'CV'lerim' bölümlerini ortala */
-.info-section,
-.cv-section {
-    text-align: center;
-}
-
-/* Başlıkları ortala */
-.info-section h2,
-.cv-section h2 {
-    color: var(--heading-color);
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    text-align: center;
+    #content {
+        padding: 1rem;
+    }
 }
