@@ -84,18 +84,13 @@ function resizeCanvas() {
         canvasWidth = canvasHeight * aspectRatio;
     }
 
-    // Mantıksal boyut
-    canvas.width = 12;
-    canvas.height = 20;
+    // Canvas'ın gerçek boyutlarını ayarla (çizim koordinat sistemi)
+    canvas.width = 12; // Oyun alanının genişliği (birim olarak)
+    canvas.height = 20; // Oyun alanının yüksekliği (birim olarak)
 
-    // Stil boyutu
+    // Stil boyutu (ekranda görünen boyut)
     canvas.style.width = `${canvasWidth}px`;
     canvas.style.height = `${canvasHeight}px`;
-
-    // Orantılı ölçek
-    const scaleX = canvasWidth / 12;
-    const scaleY = canvasHeight / 20;
-    context.scale(scaleX, scaleY);
 }
 
 // Her frame çağrılan fonksiyon
