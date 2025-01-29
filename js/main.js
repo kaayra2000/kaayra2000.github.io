@@ -1,14 +1,38 @@
 // Mevcut main.js içeriği
 
 const loadPage = (page) => {
-    if (page === 'hakkimda') {
-        // Hakkımda sayfasını yükle
-        loadHakkimda();
-    } else if (page === 'oyunlar') {
-        // Oyunlar sayfasını yükle
-        loadOyunlar();
-    }
-    // Diğer sayfalar için ekleme yapabilirsiniz
+    // İçerik alanını seç
+    const content = document.getElementById('content');
+
+    // Sayfa dosyasının yolunu belirle
+    const pageUrl = `html/${page}.html`;
+
+    // Sayfa içeriğini yükle
+    fetch(pageUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Sayfa bulunamadı');
+            }
+            return response.text();
+        })
+        .then(html => {
+            content.innerHTML = html;
+
+            // Gerekli stil dosyasını yükle
+            if (page === 'hakkimda') {
+                loadStyle('css/hakkimda.css');
+                // Data'yı yükle
+                loadHakkimdaData();
+            } else if (page === 'oyunlar') {
+                loadStyle('css/oyunlar/oyunlar.css');
+                // Gerekli script dosyasını yükle (varsa)
+                // loadScript('js/oyunlar/oyunlar.js'); // Eğer gerekliyse
+            }
+        })
+        .catch(error => {
+            console.error('Hata:', error);
+            content.innerHTML = '<p>Sayfa yüklenemedi.</p>';
+        });
 };
 
 
@@ -52,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Data yükleme fonksiyonu (hakkimda.js içinde kullanacağız)
-const loadData = async () => {
+const loadHakkimdaData = async () => {
     console.log('Data yükleniyor...');
     try {
         const response = await fetch('data.json');
