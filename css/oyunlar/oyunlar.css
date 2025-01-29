@@ -1,0 +1,14 @@
+/* css/oyunlar/oyunlar.css */
+
+/* Oyunlar sayfası için stil tanımlamaları */
+
+.oyunlar-container {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+#tetris-game {
+    margin: 2rem auto;
+    /* Tetris oyunu için gerekli stil tanımlamaları */
+}

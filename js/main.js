@@ -1,17 +1,27 @@
 // Mevcut main.js içeriği
 
+const loadPage = (page) => {
+    if (page === 'hakkimda') {
+        // Hakkımda sayfasını yükle
+        loadHakkimda();
+    } else if (page === 'oyunlar') {
+        // Oyunlar sayfasını yükle
+        loadOyunlar();
+    }
+    // Diğer sayfalar için ekleme yapabilirsiniz
+};
+
+
+const applyTheme = (theme) => {
+    // Mevcut tema sınıflarını kaldır
+    document.body.classList.remove('light', 'medium-light', 'medium-dark', 'dark');
+    // Yeni temayı ekle
+    document.body.classList.add(theme);
+    // Tercihi kaydet
+    localStorage.setItem('theme', theme);
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Tema seçimi ile ilgili kodlar
-
-    const applyTheme = (theme) => {
-        // Mevcut tema sınıflarını kaldır
-        document.body.classList.remove('light', 'medium-light', 'medium-dark', 'dark');
-        // Yeni temayı ekle
-        document.body.classList.add(theme);
-        // Tercihi kaydet
-        localStorage.setItem('theme', theme);
-    };
-
     // Tema seçici olay dinleyicisi
     const themeSelect = document.getElementById('theme-select');
     themeSelect.addEventListener('change', (e) => {
@@ -31,29 +41,19 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             // Aktif sınıfını güncelle
             navLinks.forEach(link => link.classList.remove('active'));
-            e.target.classList.add('active');
+            e.currentTarget.classList.add('active');
 
             // Sayfayı yükle
-            const page = e.target.getAttribute('data-page');
+            const page = e.currentTarget.getAttribute('data-page');
             loadPage(page);
         });
     });
-
-    // Sayfaları yükleme fonksiyonu
-    const loadPage = (page) => {
-        if (page === 'hakkimda') {
-            // Hakkımda sayfasını yükle
-            loadHakkimda();
-        }
-        // Diğer sayfalar için ekleme yapabilirsiniz
-    };
-
-    // İlk açılışta varsayılan sayfayı yükle
     loadPage('hakkimda');
 });
 
 // Data yükleme fonksiyonu (hakkimda.js içinde kullanacağız)
 const loadData = async () => {
+    console.log('Data yükleniyor...');
     try {
         const response = await fetch('data.json');
         if (!response.ok) throw new Error('Veri alınamadı');

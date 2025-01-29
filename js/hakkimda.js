@@ -27,14 +27,3 @@ function loadHakkimda() {
     // Data'yı yükle ve içerikleri doldur
     loadData();
 }
-
-// Stil dosyasını dinamik olarak yükleyen fonksiyon
-function loadStyle(url) {
-    // Daha önce eklenmiş mi kontrol et
-    if (!document.querySelector(`link[href="${url}"]`)) {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = url;
-        document.head.appendChild(link);
-    }
-}
