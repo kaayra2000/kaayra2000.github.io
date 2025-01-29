@@ -335,7 +335,19 @@ function showGameOverMessage() {
     const gameOverElement = document.getElementById('game-over-message');
     const messageElement = document.getElementById('message-text');
     gameOverElement.style.display = 'flex';
-    messageElement.textContent = 'Oyun Bitti! Skorunuz: ' + player.score;
+
+    let scoreMessage = '';
+    if (player.score < 100) {
+        scoreMessage = 'Bu kadar düşük skorla Tetris oynadığını kimseye söyleme derim!';
+    } else if (player.score >= 100 && player.score < 200) {
+        scoreMessage = 'Fena değil ama daha çok çalışmalısın!';
+    } else if (player.score >= 200 && player.score < 300) {
+        scoreMessage = 'İyi gidiyorsun, neredeyse usta olacaksın.';
+    } else {
+        scoreMessage = 'Harika bir skor! Tetris senin işin!';
+    }
+
+    messageElement.textContent = `${scoreMessage} Toplam Skorunuz: ${player.score}`;
 }
 
 // Skoru HTML'de güncelle
