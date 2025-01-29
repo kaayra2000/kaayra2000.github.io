@@ -81,19 +81,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Data yükleme fonksiyonu (hakkimda.js içinde kullanacağız)
-const loadHakkimdaData = async () => {
-    console.log('Data yükleniyor...');
+const loadHakkimdaData = async() => {
     try {
         const response = await fetch('data.json');
         if (!response.ok) throw new Error('Veri alınamadı');
-        
+
         const data = await response.json();
-        
+
         // Elementleri güncelle
         document.getElementById('name').textContent = data.user.name;
         document.getElementById('title').textContent = data.user.title;
         document.getElementById('bio').textContent = data.user.bio;
-        
+
         // CV linklerini oluştur
         const cvLinksContainer = document.getElementById('cv-links');
         cvLinksContainer.innerHTML = '';
@@ -121,11 +120,10 @@ const loadHakkimdaData = async () => {
             link.textContent = `CV (${langText})`;
             cvLinksContainer.appendChild(link);
         });
-        
     } catch (error) {
         console.error('Hata:', error);
         document.getElementById('name').textContent = "Veri Yüklenemedi";
-        document.getElementById('cv-links').innerHTML = 
+        document.getElementById('cv-links').innerHTML =
             '<p class="error">CV bilgileri yüklenemedi</p>';
     }
 };

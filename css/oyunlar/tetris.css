@@ -1,18 +1,63 @@
 .tetris-container {
+    width: 100%;
+    height: 80vh;
+    /* Ekran yüksekliğinin %80'ini kullan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tetris-container canvas {
+    border: 2px solid var(--text-color);
+    background-color: var(--card-background);
+    max-width: 100%;
+    /* Container'ı aşmamasını sağla */
+}
+
+.game-over-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--card-background);
+    /* Temaya uygun arka plan */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-canvas {
-    border: 2px solid var(--text-color);
-    background-color: var(--card-background);
-}
-
-.score-board {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 1.5rem;
     color: var(--text-color);
+    /* Temaya uygun metin rengi */
+    font-size: 1.5rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    border: 2px solid var(--text-color);
+    /* Temaya uygun çerçeve */
+}
+
+#restart-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--link-background);
+    /* Temaya uygun buton rengi */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+#restart-button:hover {
+    opacity: 0.8;
+}
+
+#message-text {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#tetris {
+    display: block;
+    margin: 0 auto;
+    background-color: #000;
 }
