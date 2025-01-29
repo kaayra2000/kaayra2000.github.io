@@ -5,6 +5,7 @@ let player;
 let dropCounter = 0;
 let dropInterval = 1000;
 let lastTime = 0;
+let highScore = localStorage.getItem('tetrisHighScore') || 0;
 
 // Temel renkler (ID=1..7) parlak tetris renkleri
 const colors = [
@@ -323,8 +324,13 @@ function playerReset() {
         (arena[0].length / 2 | 0) -
         (player.matrix[0].length / 2 | 0);
 
-    // Parça en baştan çarpışıyorsa oyun biter
+    // Oyuncu kaybettiğinde
     if (collide(arena, player)) {
+        // En yüksek skoru güncelle
+        if (player.score > highScore) {
+            highScore = player.score;
+            localStorage.setItem('tetrisHighScore', highScore);
+        }
         cancelAnimationFrame(animationId);
         showGameOverMessage();
     }
@@ -337,14 +343,18 @@ function showGameOverMessage() {
     gameOverElement.style.display = 'flex';
 
     let scoreMessage = '';
-    if (player.score < 100) {
-        scoreMessage = 'Bu kadar düşük skorla Tetris oynadığını kimseye söyleme derim!';
-    } else if (player.score >= 100 && player.score < 200) {
-        scoreMessage = 'Fena değil ama daha çok çalışmalısın!';
-    } else if (player.score >= 200 && player.score < 300) {
-        scoreMessage = 'İyi gidiyorsun, neredeyse usta olacaksın.';
+    if (player.score > highScore) {
+        scoreMessage = 'Yeni en yüksek skoru elde ettiniz! Tebrikler!';
     } else {
-        scoreMessage = 'Harika bir skor! Tetris senin işin!';
+        if (player.score < 100) {
+            scoreMessage = 'Skorun yerlerde sürünüyor! Biraz pratik yapsan iyi olur.';
+        } else if (player.score >= 100 && player.score < 200) {
+            scoreMessage = 'Eh işte, fena değil ama daha iyisini yapabilirsin.';
+        } else if (player.score >= 200 && player.score < 300) {
+            scoreMessage = 'Güzel skor! Biraz daha uğraşırsan efsane olacaksın.';
+        } else {
+            scoreMessage = 'Harika bir skor! Tetris senin işin!';
+        }
     }
 
     messageElement.textContent = `${scoreMessage} Toplam Skorunuz: ${player.score}`;
@@ -353,7 +363,11 @@ function showGameOverMessage() {
 // Skoru HTML'de güncelle
 function updateScore() {
     const scoreElem = document.getElementById('score');
+    const highScoreElem = document.getElementById('high-score');
     if (scoreElem) {
         scoreElem.innerText = player.score;
+    }
+    if (highScoreElem) {
+        highScoreElem.innerText = highScore;
     }
 }
