@@ -48,6 +48,14 @@ const applyTheme = (theme) => {
     document.body.classList.add(theme);
     // Tercihi kaydet
     localStorage.setItem('theme', theme);
+    const infoIcon = document.getElementById('info-icon');
+    if (infoIcon) {
+        if (theme === 'light' || theme === 'medium-light') {
+            infoIcon.src = '/assets/icons/info_black.svg';
+        } else if (theme === 'medium-dark' || theme === 'dark') {
+            infoIcon.src = '/assets/icons/info_white.svg';
+        }
+    }
 };
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -32,6 +32,7 @@ body.light {
     --select-text-color: #000000;
     --select-border-color: #cccccc;
     --button-text-color: #000000;
+    --info-icon-url: url('/assets/icons/info_black.svg');
 }
 
 
@@ -49,6 +50,7 @@ body.medium-light {
     --select-text-color: #111111;
     --select-border-color: #bbbbbb;
     --button-text-color: #000000;
+    --info-icon-url: url('/assets/icons/info_black.svg');
 }
 
 
@@ -66,6 +68,7 @@ body.medium-dark {
     --select-text-color: #e0e0e0;
     --select-border-color: #555555;
     --button-text-color: #ffffff;
+    --info-icon-url: url('/assets/icons/info_white.svg');
 }
 
 
@@ -83,6 +86,7 @@ body.dark {
     --select-text-color: #ffffff;
     --select-border-color: #444444;
     --button-text-color: #ffffff;
+    --info-icon-url: url('/assets/icons/info_white.svg');
 }
 
 

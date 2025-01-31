@@ -88,11 +88,17 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: transparent; /* Arkaplanı şeffaf yapar */
+    background-color: transparent; /* Arka planı şeffaf yapar */
     border: none; /* Kenarlıkları kaldırır */
     cursor: pointer;
     z-index: 2;
     padding: 0; /* Varsayılan padding'i kaldırır */
+    width: 30px; /* Butonun genişliği */
+    height: 30px; /* Butonun yüksekliği */
+    background-image: var(--info-icon-url); /* İkonu temaya göre değiştirir */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .info-button img {
