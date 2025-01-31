@@ -7,7 +7,7 @@ function loadOyunlar() {
     loadStyle('css/oyunlar/oyunlar.css');
 
     // Tetris butonuna tıklama olayını ekle
-    const tetrisButton = document.getElementById('tetris-button');
+    const tetrisButton = document.getElementById('tetris-button-link');
     tetrisButton.addEventListener('click', (e) => {
         e.preventDefault();
         loadPage('tetris');

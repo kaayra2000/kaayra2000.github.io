@@ -27,3 +27,36 @@
 .oyun-button:hover {
     background-color: #004999;
 }
+
+.tetris-oyunu {
+    position: relative;
+    width: 50%; /* Kapsayıcı genişliğini belirler */
+    max-width: 100px; /* İsteğe bağlı olarak maksimum genişlik belirleyin */
+    margin: 0 auto; /* Ortalamak için */
+}
+
+/* 16:9 Oranı Koruma */
+.tetris-oyunu::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%; /* 9 / 16 = 0.5625 * 100 = 56.25% */
+}
+
+/* Oyun Resmi */
+.tetris-oyunu-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resmi kapsayıcıya sığdırır ve oranı korur */
+    cursor: pointer;
+}
+
+/* Oyun Başlığı */
+.tetris-oyunu-title {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 1.2rem;
+    color: var(--text-color); /* Temadaki metin rengi */
+}
