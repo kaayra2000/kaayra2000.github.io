@@ -25,7 +25,6 @@ function initTetris() {
 
     // Game over öğeleri
     const gameOverElement = document.getElementById('game-over-message');
-    const messageElement = document.getElementById('message-text');
     const restartButton = document.getElementById('restart-button');
 
     // Arena matrisi (12 sütun, 20 satır)
