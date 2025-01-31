@@ -23,9 +23,14 @@ function initTetris() {
     canvas = document.getElementById('tetris');
     context = canvas.getContext('2d');
 
-    // Game over öğeleri
+    // Oyun bittiğinde gösterilen öğeler
     const gameOverElement = document.getElementById('game-over-message');
     const restartButton = document.getElementById('restart-button');
+
+    // **Yeni Eklenen Öğeler**
+    const infoButton = document.getElementById('info-button');
+    const keyInstructions = document.getElementById('key-instructions');
+    const closeInstructionsButton = document.getElementById('close-instructions');
 
     // Arena matrisi (12 sütun, 20 satır)
     arena = createMatrix(12, 20);
@@ -47,7 +52,7 @@ function initTetris() {
     // Klavye olaylarını dinle
     document.addEventListener('keydown', onKeyDown);
 
-    // Tekrar oyna
+    // Tekrar oyna butonu
     restartButton.addEventListener('click', () => {
         arena.forEach(row => row.fill(0));
         player.score = 0;
@@ -55,6 +60,16 @@ function initTetris() {
         updateScore();
         gameOverElement.style.display = 'none';
         requestAnimationFrame(update);
+    });
+
+    // **"i" Butonuna Tıklama Olayı**
+    infoButton.addEventListener('click', () => {
+        keyInstructions.style.display = 'flex';
+    });
+
+    // **Tuş Bilgisi Penceresini Kapama Olayı**
+    closeInstructionsButton.addEventListener('click', () => {
+        keyInstructions.style.display = 'none';
     });
 
     // Oyunu başlat

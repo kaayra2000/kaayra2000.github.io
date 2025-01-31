@@ -1,5 +1,13 @@
 <div class="tetris-container">
-    <canvas id="tetris"></canvas>
+    <div class="tetris-game">
+        <canvas id="tetris"></canvas>
+
+        <!-- "i" Butonu -->
+        <button id="info-button" class="info-button">
+            <img src="/assets/icons/icons8-info.svg" alt="Bilgi">
+        </button>
+    </div>
+
     <div class="score-board">
         <p>Puan: <span id="score">0</span></p>
         <p>En Yüksek Skor: <span id="high-score">0</span></p>
@@ -7,5 +15,20 @@
     <div id="game-over-message" class="game-over-message" style="display: none;">
         <p id="message-text"></p>
         <button id="restart-button">Tekrar Oyna</button>
+    </div>
+
+    <!-- Tuş Bilgileri Penceresi -->
+    <div id="key-instructions" class="key-instructions" style="display: none;">
+        <div class="instructions-content">
+            <h3>Oyun Kontrolleri</h3>
+            <ul>
+                <li><strong>Aşağı Ok Tuşu:</strong> Blokları hızla aşağı indirir.</li>
+                <li><strong>Sol Ok Tuşu:</strong> Bloku sola hareket ettirir.</li>
+                <li><strong>Sağ Ok Tuşu:</strong> Bloku sağa hareket ettirir.</li>
+                <li><strong>Q Tuşu:</strong> Bloku saat yönünün tersine döndürür.</li>
+                <li><strong>W Tuşu:</strong> Bloku saat yönünde döndürür.</li>
+            </ul>
+            <button id="close-instructions">Kapat</button>
+        </div>
     </div>
 </div>
