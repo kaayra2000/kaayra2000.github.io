@@ -123,17 +123,44 @@ function resizeCanvas() {
 function draw() {
     // Gövdenin (body) stil değişkenlerini oku
     const computedStyles = getComputedStyle(document.body);
-    // “--card-background” renk değişkenini al
+    // Arka plan ve ızgara renklerini al
     const bgColor = computedStyles.getPropertyValue('--card-background').trim() || '#000';
+    const gridColor = computedStyles.getPropertyValue('--grid-color').trim() || '#ccc';
 
     // Canvas zeminini temadaki “card-background” rengiyle doldur
     context.fillStyle = bgColor;
-    // Mantıksal oyun alanı boyutlarını kullanarak temizle
     context.fillRect(0, 0, 12, 20);
+
+    // Izgara çizimi
+    drawGrid(gridColor);
 
     // Arena ve aktif parça çizimi
     drawMatrix(arena, { x: 0, y: 0 });
     drawMatrix(player.matrix, player.pos);
+}
+
+function drawGrid(gridColor) {
+    context.save();
+    context.strokeStyle = gridColor;
+    context.lineWidth = 0.05; // Çizgi kalınlığı (ihtiyaca göre ayarlayın)
+
+    // Yatay çizgiler
+    for (let y = 0; y <= 20; y++) {
+        context.beginPath();
+        context.moveTo(0, y);
+        context.lineTo(12, y);
+        context.stroke();
+    }
+
+    // Dikey çizgiler
+    for (let x = 0; x <= 12; x++) {
+        context.beginPath();
+        context.moveTo(x, 0);
+        context.lineTo(x, 20);
+        context.stroke();
+    }
+
+    context.restore();
 }
 
 // Her frame çağrılan fonksiyon

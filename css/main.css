@@ -33,6 +33,7 @@ body.light {
     --select-border-color: #cccccc;
     --button-text-color: #000000;
     --info-icon-url: url('/assets/icons/info_black.svg');
+    --grid-color: rgba(0, 0, 0, 0.1);
 }
 
 
@@ -51,6 +52,7 @@ body.medium-light {
     --select-border-color: #bbbbbb;
     --button-text-color: #000000;
     --info-icon-url: url('/assets/icons/info_black.svg');
+    --grid-color: rgba(0, 0, 0, 0.2);
 }
 
 
@@ -69,6 +71,7 @@ body.medium-dark {
     --select-border-color: #555555;
     --button-text-color: #ffffff;
     --info-icon-url: url('/assets/icons/info_white.svg');
+    --grid-color: rgba(255, 255, 255, 0.2);
 }
 
 
@@ -87,6 +90,7 @@ body.dark {
     --select-border-color: #444444;
     --button-text-color: #ffffff;
     --info-icon-url: url('/assets/icons/info_white.svg');
+    --grid-color: rgba(255, 255, 255, 0.1);
 }
 
 
